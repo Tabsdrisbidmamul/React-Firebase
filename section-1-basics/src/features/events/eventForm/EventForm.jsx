@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-export default function EventForm() {
+export default function EventForm({ setFormOpen }) {
   return (
     <Segment clearing>
       <Header content="Create new event" />
@@ -31,8 +32,18 @@ export default function EventForm() {
         </Form.Field>
 
         <Button type="submit" floated="right" positive content="Submit" />
-        <Button type="submit" floated="right" positive content="Cancel" />
+        <Button
+          type="submit"
+          floated="right"
+          positive
+          content="Cancel"
+          onClick={() => setFormOpen(false)}
+        />
       </Form>
     </Segment>
   );
 }
+
+EventForm.propTypes = {
+  setFormOpen: PropTypes.func,
+};
