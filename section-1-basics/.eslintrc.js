@@ -18,6 +18,6 @@ module.exports = {
     quotes: ['error', 'single'],
     'no-unused-expressions': 'warn',
     'no-unused-vars': 'warn',
-    'no-console': 'error',
+    'no-console': 'warn',
   },
 };
