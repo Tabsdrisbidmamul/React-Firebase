@@ -6,3 +6,6 @@ Quick follow up and refresher to remember react components, lifecycle, hooks and
 
 ## Section 2
 Utilising CRUD operations and wrap our heads around React's 1-way binding to update components and state.
+
+## Section 3
+Moving onto routing in our React single page application
