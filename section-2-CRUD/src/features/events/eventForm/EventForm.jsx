@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import cuid from 'cuid';
+import userImage from '../../../assets/user.png';
 
-export default function EventForm({ setFormOpen, setEvents }) {
-  const initialValues = {
+export default function EventForm({
+  setFormOpen,
+  createEvent,
+  selectedEvent,
+  updateEvent,
+}) {
+  const initialValues = selectedEvent ?? {
     title: '',
     category: '',
     description: '',
@@ -15,7 +22,17 @@ export default function EventForm({ setFormOpen, setEvents }) {
   const [values, setValues] = useState(initialValues);
 
   function handleFormSubmit() {
-    console.log(values);
+    // eslint-disable-next-line no-unused-expressions
+    selectedEvent
+      ? updateEvent({ ...selectedEvent, ...values })
+      : createEvent({
+          ...values,
+          id: cuid(),
+          hostedBy: 'Bob',
+          attendees: [],
+          hostPhotoURL: userImage,
+        });
+    setFormOpen(false);
   }
 
   function handleInputChange(e) {
@@ -25,7 +42,7 @@ export default function EventForm({ setFormOpen, setEvents }) {
 
   return (
     <Segment clearing>
-      <Header content="Create new event" />
+      <Header content={selectedEvent ? 'Edit the event' : 'Create new event'} />
       <Form className="event" onSubmit={handleFormSubmit}>
         <Form.Field>
           <input
@@ -102,5 +119,7 @@ export default function EventForm({ setFormOpen, setEvents }) {
 
 EventForm.propTypes = {
   setFormOpen: PropTypes.func,
-  setEvents: PropTypes.func,
+  createEvent: PropTypes.func,
+  selectedEvent: PropTypes.object,
+  updateEvent: PropTypes.func,
 };

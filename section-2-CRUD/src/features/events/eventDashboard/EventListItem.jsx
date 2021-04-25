@@ -3,7 +3,11 @@ import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
 import EventListAttendees from './EventListAttendees';
 import PropTypes from 'prop-types';
 
-function EventListItem({ event }) {
+export default function EventListItem({
+  event,
+  selectedEventHandler,
+  deleteEventHandler,
+}) {
   return (
     <Segment.Group>
       <Segment>
@@ -32,7 +36,18 @@ function EventListItem({ event }) {
       </Segment>
       <Segment clearing>
         <div>{event.description}</div>
-        <Button color="teal" floated="right" content="View" />
+        <Button
+          color="teal"
+          floated="right"
+          content="View"
+          onClick={() => selectedEventHandler(event)}
+        />
+        <Button
+          color="red"
+          floated="right"
+          content="Delete"
+          onClick={() => deleteEventHandler(event.id)}
+        />
       </Segment>
     </Segment.Group>
   );
@@ -40,6 +55,6 @@ function EventListItem({ event }) {
 
 EventListItem.propTypes = {
   event: PropTypes.object,
+  selectedEventHandler: PropTypes.func,
+  deleteEventHandler: PropTypes.func,
 };
-
-export default EventListItem;

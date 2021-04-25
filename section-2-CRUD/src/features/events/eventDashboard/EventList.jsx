@@ -2,11 +2,22 @@ import React from 'react';
 import EventListItem from './EventListItem';
 import PropTypes from 'prop-types';
 
-function EventList({ events }) {
+export default function EventList({
+  events,
+  selectedEventHandler,
+  deleteEventHandler,
+}) {
   return (
     <>
       {events.map((event) => {
-        return <EventListItem event={event} key={event.id} />;
+        return (
+          <EventListItem
+            event={event}
+            key={event.id}
+            selectedEventHandler={selectedEventHandler}
+            deleteEventHandler={deleteEventHandler}
+          />
+        );
       })}
     </>
   );
@@ -14,6 +25,6 @@ function EventList({ events }) {
 
 EventList.propTypes = {
   events: PropTypes.array,
+  selectedEventHandler: PropTypes.func,
+  deleteEventHandler: PropTypes.func,
 };
-
-export default EventList;
