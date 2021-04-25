@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Container, Menu } from 'semantic-ui-react';
-import logo from '../../assets/logo.png';
 import PropTypes from 'prop-types';
 import { NavLink, useHistory } from 'react-router-dom';
 import SignedOutMenu from './SignedOutMenu';
 import SignedInMenu from './SignedInMenu';
 
-export default function NavBar({ setFormOpen }) {
+export default function NavBar() {
   const history = useHistory();
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -19,7 +18,7 @@ export default function NavBar({ setFormOpen }) {
     <Menu inverted fixed="top">
       <Container>
         <Menu.Item as={NavLink} exact to="/" header>
-          <img src={logo} alt="logo" style={{ marginRight: 15 }} />
+          <img src="/assets/logo.png" alt="logo" style={{ marginRight: 15 }} />
           Re-vents
         </Menu.Item>
 

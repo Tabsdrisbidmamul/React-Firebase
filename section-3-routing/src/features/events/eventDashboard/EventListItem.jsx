@@ -4,11 +4,7 @@ import EventListAttendees from './EventListAttendees';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export default function EventListItem({
-  event,
-  selectedEventHandler,
-  deleteEventHandler,
-}) {
+export default function EventListItem({ event, deleteEventHandler }) {
   return (
     <Segment.Group>
       <Segment>

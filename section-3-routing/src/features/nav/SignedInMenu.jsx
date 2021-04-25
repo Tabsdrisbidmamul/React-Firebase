@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Button, Image, Dropdown } from 'semantic-ui-react';
-import userImage from '../../assets/user.png';
+import { Menu, Image, Dropdown } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default function SignedInMenu({ signOutHandler }) {
   return (
     <Menu.Item position="right">
-      <Image avatar spaced="right" src={userImage} />
+      <Image avatar spaced="right" src="/assets/user.png" />
       <Dropdown pointing="top left" text="Bob">
         <Dropdown.Menu>
           <Dropdown.Item

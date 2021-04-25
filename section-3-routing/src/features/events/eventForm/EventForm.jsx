@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import cuid from 'cuid';
+import { Link } from 'react-router-dom';
 
 export default function EventForm({
   setFormOpen,
@@ -109,7 +110,8 @@ export default function EventForm({
           floated="right"
           positive
           content="Cancel"
-          onClick={() => setFormOpen(false)}
+          as={Link}
+          to="/events"
         />
       </Form>
     </Segment>
