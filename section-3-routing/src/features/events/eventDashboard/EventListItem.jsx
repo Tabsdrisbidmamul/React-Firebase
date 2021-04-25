@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
 import EventListAttendees from './EventListAttendees';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function EventListItem({
   event,
@@ -40,7 +41,8 @@ export default function EventListItem({
           color="teal"
           floated="right"
           content="View"
-          onClick={() => selectedEventHandler(event)}
+          as={Link}
+          to={`/events/${event.id}`}
         />
         <Button
           color="red"

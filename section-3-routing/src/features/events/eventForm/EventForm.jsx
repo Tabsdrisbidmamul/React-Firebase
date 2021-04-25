@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import cuid from 'cuid';
-import userImage from '../../../assets/user.png';
 
 export default function EventForm({
   setFormOpen,
@@ -30,7 +29,7 @@ export default function EventForm({
           id: cuid(),
           hostedBy: 'Bob',
           attendees: [],
-          hostPhotoURL: userImage,
+          hostPhotoURL: '/assets/user.png',
         });
     setFormOpen(false);
   }
