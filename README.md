@@ -9,3 +9,6 @@ Utilising CRUD operations and wrap our heads around React's 1-way binding to upd
 
 ## Section 3
 Moving onto routing in our React single page application
+
+## Section 4
+React Redux, and how to move localaised state into a central state management that all components can be controlle by
