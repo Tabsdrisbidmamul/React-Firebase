@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'semantic-ui-react';
-import { DECREMENT_COUNTER, INCREMENT_COUNTER } from './testReducer';
+import { decrement, increment } from './testReducer';
 
 export default function Sandbox() {
   const dispatch = useDispatch();
@@ -14,13 +14,13 @@ export default function Sandbox() {
       <Button
         content="Increment"
         color="green"
-        onClick={() => dispatch({ type: INCREMENT_COUNTER })}
+        onClick={() => dispatch(increment(15))}
       />
 
       <Button
         content="Decrement"
         color="red"
-        onClick={() => dispatch({ type: DECREMENT_COUNTER })}
+        onClick={() => dispatch(decrement(8))}
       />
     </>
   );
