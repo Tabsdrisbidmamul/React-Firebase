@@ -23,6 +23,7 @@ export default function NavBar() {
         </Menu.Item>
 
         <Menu.Item as={NavLink} to="/events" name="events" />
+        <Menu.Item as={NavLink} to="/sandbox" name="sandbox" />
         {authenticated && (
           <Menu.Item as={NavLink} to="/create-event">
             <Button positive inverted content="Create Event" />
