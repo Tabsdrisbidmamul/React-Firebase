@@ -35,9 +35,9 @@ export default function EventDetailedHeader({ event }) {
                   content={event.title}
                   style={{ color: 'white' }}
                 />
-                <p>Event Date</p>
+                <p>{event.date}</p>
                 <p>
-                  Hosted by <strong>Bob</strong>
+                  Hosted by <strong>{event.hostedBy}</strong>
                 </p>
               </Item.Content>
             </Item>
@@ -49,7 +49,12 @@ export default function EventDetailedHeader({ event }) {
         <Button>Cancel My Place</Button>
         <Button color="teal">JOIN THIS EVENT</Button>
 
-        <Button color="orange" floated="right" as={Link} to="/manage/">
+        <Button
+          color="orange"
+          floated="right"
+          as={Link}
+          to={`/manage/${event.id}`}
+        >
           Manage Event
         </Button>
       </Segment>

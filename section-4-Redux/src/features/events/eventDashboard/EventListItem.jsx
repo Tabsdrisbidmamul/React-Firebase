@@ -3,8 +3,12 @@ import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
 import EventListAttendees from './EventListAttendees';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteEvent } from '../eventsActions';
 
-export default function EventListItem({ event, deleteEventHandler }) {
+export default function EventListItem({ event }) {
+  const dispatch = useDispatch();
+
   return (
     <Segment.Group>
       <Segment>
@@ -44,7 +48,7 @@ export default function EventListItem({ event, deleteEventHandler }) {
           color="red"
           floated="right"
           content="Delete"
-          onClick={() => deleteEventHandler(event.id)}
+          onClick={() => dispatch(deleteEvent(event.id))}
         />
       </Segment>
     </Segment.Group>
@@ -53,6 +57,4 @@ export default function EventListItem({ event, deleteEventHandler }) {
 
 EventListItem.propTypes = {
   event: PropTypes.object,
-  selectedEventHandler: PropTypes.func,
-  deleteEventHandler: PropTypes.func,
 };

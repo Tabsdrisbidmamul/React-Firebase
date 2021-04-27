@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import cuid from 'cuid';
 import { Link } from 'react-router-dom';
 
-export default function EventForm({
-  setFormOpen,
-  createEvent,
-  selectedEvent,
-  updateEvent,
-}) {
+import { createEvent, updateEvent } from '../eventsActions';
+
+export default function EventForm({ match, history }) {
+  const dispatch = useDispatch();
+  const selectedEvent = useSelector((state) =>
+    state.event.events.find((e) => e.id === match.params.id)
+  );
+
   const initialValues = selectedEvent ?? {
     title: '',
     category: '',
@@ -24,15 +27,17 @@ export default function EventForm({
   function handleFormSubmit() {
     // eslint-disable-next-line no-unused-expressions
     selectedEvent
-      ? updateEvent({ ...selectedEvent, ...values })
-      : createEvent({
-          ...values,
-          id: cuid(),
-          hostedBy: 'Bob',
-          attendees: [],
-          hostPhotoURL: '/assets/user.png',
-        });
-    setFormOpen(false);
+      ? dispatch(updateEvent({ ...selectedEvent, ...values }))
+      : dispatch(
+          createEvent({
+            ...values,
+            id: cuid(),
+            hostedBy: 'Bob',
+            attendees: [],
+            hostPhotoURL: '/assets/user.png',
+          })
+        );
+    history.push('/events');
   }
 
   function handleInputChange(e) {
@@ -108,7 +113,7 @@ export default function EventForm({
         <Button
           type="submit"
           floated="right"
-          positive
+          negative
           content="Cancel"
           as={Link}
           to="/events"
@@ -119,8 +124,6 @@ export default function EventForm({
 }
 
 EventForm.propTypes = {
-  setFormOpen: PropTypes.func,
-  createEvent: PropTypes.func,
-  selectedEvent: PropTypes.object,
-  updateEvent: PropTypes.func,
+  match: PropTypes.object,
+  history: PropTypes.object,
 };
