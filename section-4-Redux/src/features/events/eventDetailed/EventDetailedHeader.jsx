@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Segment, Item, Button, Header } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const eventImageStyle = {
   filter: 'brightness(30%)',
@@ -15,12 +16,12 @@ const eventImageTextStyle = {
   color: 'white',
 };
 
-export default function EventDetailedHeader() {
+export default function EventDetailedHeader({ event }) {
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
         <Image
-          src={'/assets/categoryImages/drinks.jpg'}
+          src={`/assets/categoryImages/${event.category}.jpg`}
           fluid
           style={eventImageStyle}
         />
@@ -31,7 +32,7 @@ export default function EventDetailedHeader() {
               <Item.Content>
                 <Header
                   size="huge"
-                  content="Event Title"
+                  content={event.title}
                   style={{ color: 'white' }}
                 />
                 <p>Event Date</p>
@@ -55,3 +56,7 @@ export default function EventDetailedHeader() {
     </Segment.Group>
   );
 }
+
+EventDetailedHeader.propTypes = {
+  event: PropTypes.object,
+};
