@@ -19,3 +19,6 @@ Formik, an excellent tool to validate a form from the client side, of course the
 
 ## Section 6
 Async react using the useState() hook
+
+## Section 7
+Firebase introduction
