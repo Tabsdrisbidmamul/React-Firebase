@@ -16,3 +16,6 @@ React Redux, and how to move localised state into a central state management tha
 
 ## Section 5
 Formik, an excellent tool to validate a form from the client side, of course the backend will validate and sanitise the data as well. 
+
+## Section 6
+Async react using the useState() hook
