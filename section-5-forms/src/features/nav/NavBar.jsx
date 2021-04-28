@@ -4,15 +4,10 @@ import PropTypes from 'prop-types';
 import { NavLink, useHistory } from 'react-router-dom';
 import SignedOutMenu from './SignedOutMenu';
 import SignedInMenu from './SignedInMenu';
+import { useSelector } from 'react-redux';
 
 export default function NavBar() {
-  const history = useHistory();
-  const [authenticated, setAuthenticated] = useState(false);
-
-  function handleSignOut() {
-    setAuthenticated(false);
-    history.push('/');
-  }
+  const { authenticated } = useSelector((state) => state.auth);
 
   return (
     <Menu inverted fixed="top">
@@ -30,11 +25,7 @@ export default function NavBar() {
           </Menu.Item>
         )}
 
-        {authenticated ? (
-          <SignedInMenu signOutHandler={handleSignOut} />
-        ) : (
-          <SignedOutMenu setAuthenticated={setAuthenticated} />
-        )}
+        {authenticated ? <SignedInMenu /> : <SignedOutMenu />}
       </Container>
     </Menu>
   );
