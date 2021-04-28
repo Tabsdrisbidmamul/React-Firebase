@@ -44,17 +44,19 @@ export default function EventForm({ match, history }) {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          selectedEvent
-            ? dispatch(updateEvent({ ...selectedEvent, ...values }))
-            : dispatch(
-                createEvent({
-                  ...values,
-                  id: cuid(),
-                  hostedBy: 'Bob',
-                  attendees: [],
-                  hostPhotoURL: '/assets/user.png',
-                })
-              );
+          if (selectedEvent) {
+            dispatch(updateEvent({ ...selectedEvent, ...values }));
+          } else {
+            dispatch(
+              createEvent({
+                ...values,
+                id: cuid(),
+                hostedBy: 'Bob',
+                attendees: [],
+                hostPhotoURL: '/assets/user.png',
+              })
+            );
+          }
           history.push('/events');
         }}
       >

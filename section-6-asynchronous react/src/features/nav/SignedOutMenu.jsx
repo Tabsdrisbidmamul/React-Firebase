@@ -1,10 +1,9 @@
 import React from 'react';
 import { Menu, Button } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../app/common/modals/modalReducer';
 
-export default function SignedOutMenu({ setAuthenticated }) {
+export default function SignedOutMenu() {
   const dispatch = useDispatch();
 
   return (
@@ -24,7 +23,3 @@ export default function SignedOutMenu({ setAuthenticated }) {
     </Menu.Item>
   );
 }
-
-SignedOutMenu.propTypes = {
-  setAuthenticated: PropTypes.func,
-};
