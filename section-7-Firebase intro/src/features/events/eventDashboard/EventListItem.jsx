@@ -3,13 +3,10 @@ import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
 import EventListAttendees from './EventListAttendees';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { deleteEvent } from '../eventsActions';
 import { format } from 'date-fns';
+import { deleteEventInFirestore } from '../../../app/firestore/firestoreService';
 
 export default function EventListItem({ event }) {
-  const dispatch = useDispatch();
-
   return (
     <Segment.Group>
       <Segment>
@@ -49,7 +46,7 @@ export default function EventListItem({ event }) {
           color="red"
           floated="right"
           content="Delete"
-          onClick={() => dispatch(deleteEvent(event.id))}
+          onClick={() => deleteEventInFirestore(event.id)}
         />
       </Segment>
     </Segment.Group>

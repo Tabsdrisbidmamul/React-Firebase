@@ -10,6 +10,7 @@ import HomePage from '../../features/home/HomePage';
 import NavBar from '../../features/nav/NavBar';
 import Sandbox from '../../features/sandbox/Sandbox';
 import ModalManager from '../common/modals/ModalManager';
+import ErrorComponent from '../errors/ErrorComponent';
 
 function App() {
   const { key } = useLocation();
@@ -33,6 +34,7 @@ function App() {
                 component={EventForm}
                 key={key}
               />
+              <Route path="/error" component={ErrorComponent} />
             </Container>
           </>
         )}
