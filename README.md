@@ -24,6 +24,6 @@ Async react using the useState() hook
 Firebase introduction
 
 ## Section 8
-Firebase Authentication, creating an authentication system from 2 options: 
-	* Email and password 
-	* Social Logins (Google, Facebook etc.)
+* Firebase Authentication, creating an authentication system from 2 options: 
+  * Email and password 
+  * Social Logins (Google, Facebook etc.)
